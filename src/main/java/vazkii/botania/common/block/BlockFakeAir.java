@@ -12,7 +12,9 @@ package vazkii.botania.common.block;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDynamicLiquid;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -34,9 +36,10 @@ import java.util.Random;
 public class BlockFakeAir extends BlockMod {
 
 	private static final AxisAlignedBB AABB = new AxisAlignedBB(0, 0, 0, 0, 0, 0);
+	public static final PropertyInteger LEVEL = PropertyInteger.create("level", 0, 15);
 
 	public BlockFakeAir() {
-		super(Material.AIR, LibBlockNames.FAKE_AIR);
+		super(Material.field_189963_J, LibBlockNames.FAKE_AIR);
 		setTickRandomly(true);
 	}
 
@@ -100,6 +103,7 @@ public class BlockFakeAir extends BlockMod {
 	public boolean canCollideCheck(IBlockState state, boolean hitIfLiquid) {
 		return false;
 	}
+	
 
 	@Override
 	public boolean canBeReplacedByLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
